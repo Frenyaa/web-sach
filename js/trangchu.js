@@ -1,22 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const btnLogin = document.getElementById("btnLogin");
-    const btnCart = document.getElementById("btnCart");
+    const memberLink = document.querySelector(".member a");
+    const menuMember = document.querySelector(".menuMember");
+    const btnCart = document.getElementById("btnCart"); // Nếu có nút giỏ hàng
 
-    // Giả lập trạng thái đăng nhập (false: chưa đăng nhập, true: đã đăng nhập)
+    // Trạng thái đăng nhập (false: chưa đăng nhập, true: đã đăng nhập)
     let isLoggedIn = false;
 
-    // Xử lý khi nhấn nút "Đăng nhập/Đăng ký"
-    btnLogin.addEventListener("click", function () {
+    // Cập nhật giao diện khi tải trang
+    if (!isLoggedIn) {
+        memberLink.innerHTML = '<i class="fa fa-user"></i> Đăng nhập/Đăng ký';
+        menuMember.classList.add("hide");
+        if (btnCart) btnCart.style.display = "none"; // Ẩn nút giỏ hàng
+    }
+
+    // Xử lý khi nhấn vào "Đăng nhập/Đăng ký"
+    memberLink.addEventListener("click", function () {
         if (!isLoggedIn) {
-            // Giả lập đăng nhập hoặc đăng ký thành công
+            // Giả lập đăng nhập thành công
             isLoggedIn = true;
             alert("Đăng nhập/Đăng ký thành công!");
 
             // Cập nhật giao diện
-            btnLogin.textContent = "Tài khoản của tôi"; // Thay đổi nút thành "Tài khoản của tôi"
-            btnCart.style.display = "inline-block"; // Hiện nút giỏ hàng
-        } else {
-            alert("Bạn đã đăng nhập!");
+            memberLink.innerHTML = '<i class="fa fa-user"></i> Tài khoản';
+            menuMember.classList.remove("hide");
+            if (btnCart) btnCart.style.display = "inline-block"; // Hiện nút giỏ hàng
         }
     });
 });
@@ -707,3 +714,16 @@ function hideSanPhamKhongThuoc(list) {
 		if (hide) hideLi(allLi[i]);
 	}
 }
+
+<div class="tools-member">
+    <div class="member">
+        <a onclick="checkTaiKhoan()">
+            <i class="fa fa-user"></i>
+            Đăng nhập/Đăng ký
+        </a>
+        <div class="menuMember hide">
+            <a href="nguoidung.html">Trang người dùng</a>
+            <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
+        </div>
+    </div>
+</div>
