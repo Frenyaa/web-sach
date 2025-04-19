@@ -221,11 +221,7 @@ hr {
     }
 }
 
-.navbar {
-    background-color: #87CEEB; /* Màu xanh dương nhạt */
-}
-
-#btnAccount, #btnCart {
+#btnLogin, #btnCart {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -239,7 +235,7 @@ hr {
     border-radius: 5px;
 }
 
-#btnAccount {
+#btnLogin {
     background-color: #2196F3; /* Màu xanh dương */
     color: white;
     border: none;

@@ -1,3 +1,26 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const btnLogin = document.getElementById("btnLogin");
+    const btnCart = document.getElementById("btnCart");
+
+    // Giả lập trạng thái đăng nhập (false: chưa đăng nhập, true: đã đăng nhập)
+    let isLoggedIn = false;
+
+    // Xử lý khi nhấn nút "Đăng nhập/Đăng ký"
+    btnLogin.addEventListener("click", function () {
+        if (!isLoggedIn) {
+            // Giả lập đăng nhập hoặc đăng ký thành công
+            isLoggedIn = true;
+            alert("Đăng nhập/Đăng ký thành công!");
+
+            // Cập nhật giao diện
+            btnLogin.textContent = "Tài khoản của tôi"; // Thay đổi nút thành "Tài khoản của tôi"
+            btnCart.style.display = "inline-block"; // Hiện nút giỏ hàng
+        } else {
+            alert("Bạn đã đăng nhập!");
+        }
+    });
+});
+
 window.onload = function () {
 	khoiTao();
 
@@ -24,9 +47,6 @@ window.onload = function () {
 	// autocomplete cho khung tim kiem
 	autocomplete(document.getElementById('search-box'), list_products);
 
-	// thêm tags (từ khóa) vào khung tìm kiếm
-	// var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
-	// for (var t of tags) addTags(t, "index.html?search=" + t);
 
 	// Thêm danh sách hãng điện thoại
 	// update them 
